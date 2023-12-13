@@ -5,12 +5,12 @@ import { Person, EditLocation } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 
 type jobCardProps = {
-    id: string,
-    title: string,
-    content: string,
-    company: string,
-    hiringManager: string
-}
+  id: string;
+  title: string;
+  content: string;
+  company: string;
+  hiringManager: string;
+};
 
 const JobCard: React.FC<jobCardProps> = (props: jobCardProps) => {
   const {
@@ -30,13 +30,20 @@ const JobCard: React.FC<jobCardProps> = (props: jobCardProps) => {
     }
   }, [more, content, setContentText]);
 
-  const moreBtnMemo = useMemo(() => ((more && content.length > 800) ? (
-    // eslint-disable-next-line
-    <span onClick={handleMoreContent} className="more-btn">More</span>
-  ) : (
-    // eslint-disable-next-line
-    <span onClick={handleMoreContent} className="more-btn">Less</span>
-  )), [content, handleMoreContent, more]);
+  const moreBtnMemo = useMemo(
+    () => (more && content.length > 800 ? (
+        // eslint-disable-next-line
+        <span onClick={handleMoreContent} className="more-btn">
+          More
+        </span>
+    ) : (
+        // eslint-disable-next-line
+        <span onClick={handleMoreContent} className="more-btn">
+          Less
+        </span>
+    )),
+    [content, handleMoreContent, more],
+  );
 
   useEffect(() => {
     if (content.length > 800) {
@@ -57,16 +64,16 @@ const JobCard: React.FC<jobCardProps> = (props: jobCardProps) => {
       <div className="job-card-bottom">
         <div>
           {hiringManager && (
-          <p className="manager-name">
-            <Person />
-            {hiringManager}
-          </p>
+            <p className="manager-name">
+              <Person />
+              {hiringManager}
+            </p>
           )}
           {company && (
-          <p className="company-name">
-            <EditLocation />
-            {company}
-          </p>
+            <p className="company-name">
+              <EditLocation />
+              {company}
+            </p>
           )}
         </div>
         <div className="job-actions-div">

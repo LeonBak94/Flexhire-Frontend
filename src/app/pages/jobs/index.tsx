@@ -29,7 +29,7 @@ const JobCards: React.FC<propTypes> = (props: propTypes) => {
             id={node.job.id}
             title={node.job.title}
             content={node.job.description}
-            company={node.client.firm.name}
+            company={node.client.firms.name}
             hiringManager={node.client.firstName}
           />
         ))}

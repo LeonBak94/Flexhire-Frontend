@@ -9,5 +9,6 @@
         "FLEXHIRE",
         "persistor",
         "toastify"
-    ]
+    ],
+    "prettier.singleQuote": true
 }

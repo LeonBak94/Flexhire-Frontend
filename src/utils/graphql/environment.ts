@@ -18,6 +18,7 @@ async function fetchGraphQL(params: RequestParameters, variables: Variables) {
         'FLEXHIRE-API-KEY': apiKey,
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+        mode: 'no-cors',
       },
       body: JSON.stringify({
         query: params.text,

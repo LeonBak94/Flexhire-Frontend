@@ -13,9 +13,9 @@ export type dashboardQueryResponse = {
         readonly avatarUrl: string | null;
         readonly profile: {
             readonly id: string;
-            readonly freelancerRate: unknown | null;
-            readonly annualCompensation: unknown | null;
-            readonly availabilityType: ReadonlyArray<string> | null;
+            readonly freelancerRate: {
+                readonly formatted: string | null;
+            } | null;
             readonly freelancerType: {
                 readonly id: string;
                 readonly name: string | null;
@@ -37,9 +37,9 @@ export type dashboardQueryResponse = {
             readonly client: {
                 readonly id: string;
                 readonly firstName: string | null;
-                readonly firm: {
+                readonly firms: ReadonlyArray<{
                     readonly name: string | null;
-                } | null;
+                }> | null;
             } | null;
             readonly job: {
                 readonly id: string;
@@ -69,9 +69,9 @@ query dashboardQuery {
     avatarUrl
     profile {
       id
-      freelancerRate
-      annualCompensation
-      availabilityType
+      freelancerRate {
+        formatted
+      }
       freelancerType {
         id
         name
@@ -94,7 +94,7 @@ query dashboardQuery {
       client {
         id
         firstName
-        firm {
+        firms {
           name
           id
         }
@@ -167,22 +167,19 @@ v6 = {
     {
       "alias": null,
       "args": null,
-      "kind": "ScalarField",
+      "concreteType": "Money",
+      "kind": "LinkedField",
       "name": "freelancerRate",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "annualCompensation",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "availabilityType",
+      "plural": false,
+      "selections": [
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "formatted",
+          "storageKey": null
+        }
+      ],
       "storageKey": null
     },
     {
@@ -332,8 +329,8 @@ return {
                     "args": null,
                     "concreteType": "Firm",
                     "kind": "LinkedField",
-                    "name": "firm",
-                    "plural": false,
+                    "name": "firms",
+                    "plural": true,
                     "selections": [
                       (v4/*: any*/)
                     ],
@@ -447,8 +444,8 @@ return {
                     "args": null,
                     "concreteType": "Firm",
                     "kind": "LinkedField",
-                    "name": "firm",
-                    "plural": false,
+                    "name": "firms",
+                    "plural": true,
                     "selections": [
                       (v4/*: any*/),
                       (v0/*: any*/)
@@ -496,14 +493,14 @@ return {
     ]
   },
   "params": {
-    "cacheID": "ff7489c262604897e2e85fc4cf51a69f",
+    "cacheID": "2bfd788f99f5d25f65180e056d23c9e2",
     "id": null,
     "metadata": {},
     "name": "dashboardQuery",
     "operationKind": "query",
-    "text": "query dashboardQuery {\n  currentUser {\n    id\n    firstName\n    lastName\n    avatarUrl\n    profile {\n      id\n      freelancerRate\n      annualCompensation\n      availabilityType\n      freelancerType {\n        id\n        name\n      }\n      totalExperience\n      textIntroduction\n    }\n    userSkills {\n      experience\n      skill {\n        id\n        name\n      }\n      id\n    }\n    timezone\n  }\n  contracts(first: 5) {\n    nodes {\n      client {\n        id\n        firstName\n        firm {\n          name\n          id\n        }\n      }\n      job {\n        id\n        title\n        description\n        questions {\n          title\n          id\n        }\n      }\n      id\n    }\n    totalCount\n  }\n}\n"
+    "text": "query dashboardQuery {\n  currentUser {\n    id\n    firstName\n    lastName\n    avatarUrl\n    profile {\n      id\n      freelancerRate {\n        formatted\n      }\n      freelancerType {\n        id\n        name\n      }\n      totalExperience\n      textIntroduction\n    }\n    userSkills {\n      experience\n      skill {\n        id\n        name\n      }\n      id\n    }\n    timezone\n  }\n  contracts(first: 5) {\n    nodes {\n      client {\n        id\n        firstName\n        firms {\n          name\n          id\n        }\n      }\n      job {\n        id\n        title\n        description\n        questions {\n          title\n          id\n        }\n      }\n      id\n    }\n    totalCount\n  }\n}\n"
   }
 };
 })();
-(node as any).hash = '26d5e26bdee097435ac39d55f3b0b543';
+(node as any).hash = 'f607928813663aca77963f38ffc86861';
 export default node;

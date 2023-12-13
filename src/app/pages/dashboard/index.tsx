@@ -68,9 +68,9 @@ const Dashboard: React.FC = () => {
           avatarUrl
           profile {
             id
-            freelancerRate
-            annualCompensation
-            availabilityType
+            freelancerRate {
+              formatted
+            }
             freelancerType {
               id
               name
@@ -94,7 +94,7 @@ const Dashboard: React.FC = () => {
             client {
               id
               firstName
-              firm {
+              firms {
                 name
               }
             }
