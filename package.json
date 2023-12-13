@@ -6,6 +6,9 @@
     "name": "Leon Bak",
     "email": "leon.work1212@gmail.com"
   },
+  "engines": {
+    "node": "16.x"
+  },
   "dependencies": {
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
