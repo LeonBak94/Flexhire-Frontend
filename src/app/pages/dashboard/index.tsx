@@ -24,7 +24,6 @@ const User: React.FC<propTypes> = (props: propTypes) => {
       <Avatar src={currentUser.avatarUrl} className="avatar-img" />
       <div>
         <h3 className="user-name">
-          Hi
           {currentUser.firstName}
           , welcome to Flexhire
         </h3>
@@ -119,9 +118,7 @@ const Dashboard: React.FC = () => {
 
   const compensationMemo = useMemo(() => dashboardData && (
     <CompensationCard
-      hourly={dashboardData.currentUser.profile.freelancerRate}
-      annual={dashboardData.currentUser.profile.annualCompensation}
-      type={dashboardData.currentUser.profile.availabilityType[0]}
+      hourly={dashboardData.currentUser.profile.freelancerRate.formated}
     />
   ), [dashboardData]);
 

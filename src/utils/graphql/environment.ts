@@ -6,12 +6,11 @@ import {
 } from 'relay-runtime';
 import { RequestParameters } from 'relay-runtime/lib/util/RelayConcreteNode';
 import { Variables } from 'relay-runtime/lib/util/RelayRuntimeTypes';
-import config from 'app/config';
 
 async function fetchGraphQL(params: RequestParameters, variables: Variables) {
   const apiKey = localStorage.getItem('apiKey') || '';
   try {
-    const response = await fetch(config.graphql, {
+    const response = await fetch('/api/v2', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

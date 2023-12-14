@@ -1,20 +1,19 @@
 import React, {
   useState, useCallback, useEffect, useMemo,
 } from 'react';
-import { Person, EditLocation } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 
 type jobCardProps = {
   id: string;
   title: string;
   content: string;
-  company: string;
-  hiringManager: string;
+  // company: string;
+  // hiringManager: string;
 };
 
 const JobCard: React.FC<jobCardProps> = (props: jobCardProps) => {
   const {
-    id, title, content, company, hiringManager,
+    id, title, content,
   } = props;
 
   const [contentText, setContentText] = useState<string>();
@@ -62,20 +61,6 @@ const JobCard: React.FC<jobCardProps> = (props: jobCardProps) => {
         {moreBtnMemo}
       </p>
       <div className="job-card-bottom">
-        <div>
-          {hiringManager && (
-            <p className="manager-name">
-              <Person />
-              {hiringManager}
-            </p>
-          )}
-          {company && (
-            <p className="company-name">
-              <EditLocation />
-              {company}
-            </p>
-          )}
-        </div>
         <div className="job-actions-div">
           <Link to={`/questions?id=${id}`}>Questions</Link>
           <Link to={`/codetest?id=${id}`}>Code Test</Link>

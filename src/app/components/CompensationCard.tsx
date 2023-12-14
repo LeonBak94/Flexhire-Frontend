@@ -5,13 +5,13 @@ import { Check, RemoveRedEye } from '@material-ui/icons';
 
 type compensationProps = {
     hourly: number,
-    annual: number,
-    type: string
+    // annual: number,
+    // type: string
 }
 
 const CompensationCard: React.FC<compensationProps> = (props: compensationProps) => {
   const {
-    hourly, annual, type,
+    hourly,
   } = props;
 
   return (
@@ -28,23 +28,9 @@ const CompensationCard: React.FC<compensationProps> = (props: compensationProps)
         </div>
         <div className="compensation-item">
           <div className="compensation-item-circle">
-            $
-            {annual || 76000}
-            /YR
-          </div>
-          <p>PERMANENT</p>
-        </div>
-        <div className="compensation-item">
-          <div className="compensation-item-circle">
             <div className="check-div"><Check /></div>
           </div>
           <p>AVALIABILITY</p>
-        </div>
-        <div className="compensation-item">
-          <div className="compensation-item-circle">
-            {type === 'full_time' && 'FULL TIME'}
-          </div>
-          <p>TYPE</p>
         </div>
       </div>
       <hr />
